@@ -1,0 +1,42 @@
+Customer.java :
+
+public class Customer {
+     private String customerName;
+     private String customerEmail;
+	 private  String customerType;
+	 private  String customerLocation;
+     public Customer(){}
+	 public Customer(String customerName, String customerEmail, String customerType,String customerAddress){
+     this.customerName=customerName; 
+     this.customerEmail=customerEmail;
+     this.customerType=customerType;
+      this.customerLocation=customerAddress;
+	 }
+  public void display(){
+     System.out.println("Name: "+this.customerName+"\nE-mail: "+this.customerEmail+"\nType: "+this.customerType+"\nLocation: "+this.customerLocation);
+  }
+  }
+
+
+
+Main.java :
+
+import java.util.*;
+public class Main {
+
+    public static void main(String[] args){
+		//fill the code here
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter the Customer Details\nEnter the name");
+        String x=sc.nextLine();
+        System.out.println("Enter the email");
+        String y=sc.nextLine();
+        System.out.println("Enter the type");
+        String z=sc.nextLine();
+        System.out.println("Enter the location");
+        String b=sc.nextLine();
+        Customer a=new Customer(x,y,z,b);
+        a.display();
+	}
+
+}
