@@ -1,0 +1,78 @@
+Main.java :
+
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+public class Main{
+    public static void main(String[]args) throws Exception
+    { 
+  // fill the code
+	 Scanner sc=new Scanner(System.in);
+     Customer c=new Customer();
+      System.out.println("Enter the Customer Details");
+      System.out.println("Enter the name");
+      c.setName(sc.nextLine());
+        // fill the code
+      System.out.println("Enter the email");
+      c.setEmail(sc.nextLine());
+      // fill the code
+      System.out.println("Enter the type");
+       c.setType(sc.nextLine());
+       // fill the code
+      System.out.println("Enter the location");
+            c.setLocation(sc.nextLine());
+    // fill the code
+      System.out.println("\nCustomer Details");
+      System.out.println("Name: "+c.getCustomerName());  // fill the code
+      System.out.println("E-mail: "+c.getCustomerEmail());  // fill the code
+      System.out.println("Type: "+c.getCustomerType());  // fill the code
+      System.out.println("Location: "+c.getCustomerLocation());  // fill the code
+
+    }
+}
+
+
+
+Customer.java :
+
+public class Customer {
+     private String customerName;
+	 private String customerEmail;
+	 private  String customerType;
+	 private  String customerLocation;
+     public Customer(){}
+	 public Customer(String name,String email,String type,String loc){
+     this.customerName=name; 
+     this.customerEmail=email;
+     this.customerType=type;
+     this.customerLocation=loc;
+	 }
+	// fill the code
+  public void setName(String name){
+    this.customerName=name;
+  }
+  public void setEmail(String email){
+    this.customerEmail=email;
+  }
+  public void setType(String type){
+    this.customerType=type;
+  }
+   public void setLocation(String loc){
+    this.customerLocation=loc;
+  }
+  
+  public String getCustomerName(){
+    return this.customerName;
+  }
+ public String getCustomerEmail(){
+    return this.customerEmail;
+  }
+  public String getCustomerType(){
+    return this.customerType;
+  }
+   public String getCustomerLocation(){
+    return this.customerLocation;
+  }
+
+
+}
