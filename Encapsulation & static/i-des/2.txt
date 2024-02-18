@@ -1,0 +1,61 @@
+itemType.java :
+
+import java.text.*;
+import java.text.*;
+public class ItemType {
+	
+		//Fill your code		
+	String name;
+    Double costPerDay;
+    Double deposit;
+    public String getName( ) {
+        return this.name;
+    }
+  public void setName(String name) {
+        this.name = name;
+}public double getCostPerDay( ) {
+        return this.costPerDay;
+}
+
+public void setDeposit(double n) {
+        this.deposit = n;
+}public double getDeposit( ) {
+        return this.deposit;
+}
+
+public void setCostPerDay(double n) {
+        this.costPerDay = n;
+}
+	public void Display(){
+        DecimalFormat df=new DecimalFormat("#.00");
+		//Fill your code	
+         System.out.println("Item type details\nName : "+this.name+"\nCostPerDay : "+df.format(this.costPerDay)+"\nDeposit : "+df.format(this.deposit));
+	
+	}
+}
+
+
+
+
+
+Main.java :
+
+import java.io.*;
+import java.util.*;
+class Main{
+	public static void main(String[] args) throws Exception{ 
+
+		//Fill your code		
+        Scanner sc=new Scanner(System.in);
+        ItemType i=new ItemType();
+        System.out.println("Enter the item type name");
+        i.setName(sc.nextLine());
+    System.out.println("Enter the cost per day");
+        i.setCostPerDay(sc.nextDouble());
+        sc.nextLine();
+        System.out.println("Enter the deposit");
+        i.setDeposit(sc.nextDouble());
+        i.Display();
+        
+	}
+}
