@@ -1,0 +1,25 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String text = sc.nextLine();
+        System.out.println(convertToSmsLingo(text));
+    }
+
+    public static String convertToSmsLingo(String text) {
+        String s = text;
+        for(int i=0 ; i<4 ;i++){
+            if (s.contains("yes"))
+            s = s.replace("yes", "s");
+        else if (s.contains("you"))
+            s = s.replace("you", "u");
+        else if (s.contains("today"))
+            s = s.replace("today", "2day");
+        else if (s.contains("why"))
+            s = s.replace("why", "y");
+        }
+        
+        return s;
+    }
+}
