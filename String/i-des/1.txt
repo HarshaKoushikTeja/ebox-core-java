@@ -1,0 +1,92 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        String s1 = sc.nextLine();
+        String s2 = sc.nextLine();
+
+        int strlen = findStringLength(s1.toCharArray());
+        System.out.println("Length of the first string is " + strlen);
+        strlen = findStringLength(s2.toCharArray());
+        System.out.println("Length of the second string is " + strlen);
+
+        char[] reverse = findStringReverse(s1.toCharArray());
+        System.out.print("The reverse of the first string is ");
+        printArray(reverse);
+
+        reverse = findStringReverse(s2.toCharArray());
+        System.out.print("The reverse of the second string is ");
+        printArray(reverse);
+
+        reverse = concatenateStrings(s1.toCharArray(), s2.toCharArray());
+        System.out.print("The concatenated string is ");
+        printArray(reverse);
+
+        if (compareStrings(s1.toCharArray(), s2.toCharArray()) == 1) {
+            System.out.println(s2 + " appears before " + s1);
+        } else if (compareStrings(s1.toCharArray(), s2.toCharArray()) == -1) {
+            System.out.println(s1 + " appears before " + s2);
+        } else {
+            System.out.println("Both the input strings are same");
+        }
+    }
+
+    private static void printArray(char[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            System.out.print(arr[i]);
+        }
+        System.out.println(arr[n - 1]);
+    }
+
+    private static int findStringLength(char[] s1) {
+        return s1.length;
+    }
+
+    private static char[] findStringReverse(char[] a) {
+        int n = a.length;
+        for (int i = 0; i < n / 2; i++) {
+            char temp = a[i];
+            a[i] = a[n - i - 1];
+            a[n - i - 1] = temp;
+        }
+        return a;
+    }
+
+    private static char[] concatenateStrings(char[] a, char[] b) {
+        int n1 = a.length;
+        int n2 = b.length;
+        char[] result = new char[n1 + n2];
+        for (int i = 0; i < n1; i++) {
+            result[i] = a[i];
+        }
+        for (int i = 0; i < n2; i++) {
+            result[n1 + i] = b[i];
+        }
+        return result;
+    }
+
+    private static int compareStrings(char[] a, char[] b) {
+        int n1 = a.length;
+        int n2 = b.length;
+        int i = 0, j = 0;
+        while (i < n1 && j < n2) {
+            if (a[i] == b[j]) {
+                i++;
+                j++;
+            } else if (a[i] > b[j]) {
+                return 1;
+            } else {
+                return -1;
+            }
+        }
+        if (n1 > n2) {
+            return 1;
+        } else if (n1 == n2) {
+            return 0;
+        } else {
+            return -1;
+        }
+    }
+}
