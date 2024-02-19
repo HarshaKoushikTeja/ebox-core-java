@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of elements in the array");
+        int n = scanner.nextInt();
+
+        int[] arr = new int[n];
+        System.out.print("Enter the elements in the array");
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
+        java.util.Arrays.sort(arr);
+
+        double median = calculateMedian(arr, n);
+        System.out.printf("The median of the array is %.2f\n", median);
+    }
+
+    public static double calculateMedian(int[] arr, int n) {
+        if (n % 2 == 0) {
+            return (double) (arr[(n - 1) / 2] + arr[n / 2]) / 2.0;
+        } else {
+            return (double) arr[n / 2];
+        }
+    }
+}
