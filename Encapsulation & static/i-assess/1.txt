@@ -1,0 +1,58 @@
+Shape.java :
+
+public class Shape {
+    public static double value1;
+    public static double value2;
+
+    public static class Rectangle {
+        public Double computeRectangleArea() {
+            return Shape.value1 * Shape.value2;
+        }
+    }
+
+    public static class Triangle {
+        public Double computeTriangleArea() {
+            return 0.5 * Shape.value1 * Shape.value2;
+        }
+    }
+}
+
+
+
+
+Main.java :
+
+import java.util.*;
+import java.text.*;
+
+class Main{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        DecimalFormat df = new DecimalFormat("#.00");
+
+        System.out.println("Enter the shape\n1.Rectangle\n2.Triangle");
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+                System.out.println("Enter the length and breadth:");
+                Shape.value1 = scanner.nextDouble();
+                Shape.value2 = scanner.nextDouble();
+                Shape.Rectangle rectangle = new Shape.Rectangle();
+                System.out.println("Area of rectangle is " + df.format(rectangle.computeRectangleArea()));
+                break;
+            case 2:
+                System.out.println("Enter the base and height:");
+                Shape.value1 = scanner.nextDouble();
+                Shape.value2 = scanner.nextDouble();
+                Shape.Triangle triangle = new Shape.Triangle();
+                System.out.println("Area of triangle is " + df.format(triangle.computeTriangleArea()));
+                break;
+            default:
+                System.out.println("Invalid choice");
+                break;
+        }
+
+        scanner.close();
+    }
+}
