@@ -1,0 +1,44 @@
+Fibonacci.java:
+
+public class Fibonacci{
+    public static int fiboLastDigit(int n)
+    {
+    //type your code here
+    long n1, n2, temp;
+    n1 = n2 = 1;
+    if (n == 0)
+    {
+        return 0;
+    }
+    else if (n== 1 || n== 2)
+    {
+        return 1;
+    }
+    else{
+    for (int i = 2; i < n; i++)
+    {
+        temp = n2;
+        n2 = n1 + n2;
+        n1 = temp;
+    }
+    }
+    long res = n2 % 10;
+    return (int)res;
+    }
+}
+
+
+Main.java:
+
+
+import java.util.*;
+public class Main{
+    public static void main(String args[]){
+        //get inputs
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int result = Fibonacci.fiboLastDigit(n);
+	//tpe your code here
+        System.out.println(result);
+    }
+}
