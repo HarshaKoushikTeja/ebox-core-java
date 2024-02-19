@@ -1,0 +1,32 @@
+NiceNumber.java:
+
+public class NiceNumber{
+    public static int findType (int x)
+    {
+        int count=0;
+    //type your code here
+        for(int i=1;i<=x;i++){
+            if(x%i==0){
+                count+=1;
+            }
+        }
+        return count;
+}
+}
+
+
+
+Main.java:
+
+import java.util.*;
+public class Main{
+    public static void main(String args[]){
+        //get inputs
+        Scanner sc=new Scanner(System.in);
+        int x=sc.nextInt();
+        int result = NiceNumber.findType(x);
+        //type your code here
+        if(result==4) System.out.println("Nice");
+        else System.out.println("Not Nice");
+    }
+}
