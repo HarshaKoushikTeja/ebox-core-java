@@ -1,0 +1,34 @@
+ModInverse.java:
+
+public class ModInverse{
+    public static int findValue (int x, int m)
+    {
+    int i,k=-1;
+    for(i=1;i<m;i++)
+    {
+        if(((x%m)*(i%m))%m==1)
+        {
+            k=i;
+        }
+    }
+    return k;
+}
+}
+
+
+
+
+Main.java:
+
+import java.util.*;
+public class Main{
+    public static void main(String args[]){
+        //get inputs
+        Scanner sc=new Scanner(System.in);
+        int x=sc.nextInt();
+        int m=sc.nextInt();
+        int result = ModInverse.findValue(x,m);
+        System.out.println(result);
+        //type your code here
+    }
+}
