@@ -1,0 +1,33 @@
+NumberType.java:
+
+public class NumberType{
+    public static int findType (int x)
+    {
+        int sum=0;
+    //type your code here
+        for(int i=1;i<x;i++){
+            if(x%i==0){
+                sum+=i;
+            }
+        }
+        
+        return sum;
+}
+}
+
+
+Main.java:
+
+import java.util.*;
+public class Main{
+    public static void main(String args[]){
+        //get inputs
+        Scanner sc=new Scanner(System.in);
+        int x=sc.nextInt();
+        int sum = NumberType.findType (x);
+        //type your code here
+        if(sum==x) System.out.println(x+" is a perfect number");
+        else if(sum<x) System.out.println(x+" is a deficient number");
+        else System.out.println(x+" is an abundant number");
+    }
+}
