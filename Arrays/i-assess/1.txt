@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int r = sc.nextInt();
+        int c = sc.nextInt();
+
+        int co = 1;
+        int a[][] = new int[n][n];
+
+        for (int j = 0; j < n; j++) {
+            for (int i = 0; i < n; i++) {
+                a[i][j] = co;
+                co++;
+            }
+        }
+        
+        for (int j = 0; j < n; j++) {
+            for (int i = 0; i < n / 2; i++) {
+                if(j%2!=0){
+                    int t = a[i][j];
+                    a[i][j] = a[n - 1 - i][j];
+                    a[n - 1 - i][j] = t;
+                }
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(a[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println(a[r-1][c-1]);
+    }
+}
