@@ -1,0 +1,108 @@
+Customer.java :
+
+ public class Customer {
+    private String name;
+    private String accountType;
+    private double balance;
+    private static int noOfTransactions;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public static int getNoOfTransactions() {
+        return noOfTransactions;
+    }
+
+    public static void setNoOfTransactions(int noOfTransactions) {
+        Customer.noOfTransactions = noOfTransactions;
+    }
+    public void deposit(double amount)
+    {
+        balance += amount;
+        noOfTransactions++;
+        System.out.printf("Your balance after the transaction is : %.1f\n",balance);
+    }
+    public void withdraw(double amt)
+    {
+        if(amt>balance)
+            System.out.println("Insufficient Balance");
+        else{
+            balance-=amt;
+            noOfTransactions++;
+             System.out.printf("Your balance after the transaction is : %.1f\n",balance);
+        }
+    }
+}
+
+
+
+
+
+Main.java :
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the name");
+        String name = scanner.nextLine();
+
+        System.out.print("Enter the accountType [Current , Savings, Demat]");
+        String accountType = scanner.nextLine();
+
+        System.out.print("Enter the balance");
+        double balance = scanner.nextDouble();
+
+        Customer customer = new Customer();
+        customer.setName(name);
+        customer.setAccountType(accountType);
+        customer.setBalance(balance);
+
+        int choice;
+        do {
+            System.out.println("\nEnter 1 to deposit an amount 2 to withdraw an amount 3 to exit");
+            choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter the amount to deposit ");
+                    double depositAmount = scanner.nextDouble();
+                    customer.deposit(depositAmount);
+                    break;
+                case 2:
+                    System.out.print("Enter the amount to withdraw ");
+                    double withdrawAmount = scanner.nextDouble();
+                    customer.withdraw(withdrawAmount);
+                    break;
+                case 3:
+                    System.out.println("Number of Transactions done : " + Customer.getNoOfTransactions());
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        } while (choice != 3);
+    }
+}
