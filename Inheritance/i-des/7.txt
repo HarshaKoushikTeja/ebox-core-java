@@ -1,0 +1,90 @@
+Event.java:
+
+public class Event {
+	//write your code here
+	private String name;
+	private String detail;
+	private String ownerName;
+	 public Event(String a,String b,String c){
+		 this.name=a;
+		 this.detail=b;
+		 this.ownerName=c;
+	 }
+	 public double projectedRevenue(){
+		 return 0.0;
+	 }
+}
+
+
+
+
+Main.java:
+
+import java.util.*;
+public class Main {
+	public static void main(String args[]) throws Exception {
+		//write your code here
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the name of the event:" );
+		String name=sc.nextLine();
+		System.out.println("Enter the detail of the event:");
+		String det=sc.nextLine();
+		System.out.println("Enter the owner name of the event:");
+		String ow=sc.nextLine();
+		System.out.println("Enter the type of the event:\n1.Exhibition\n2.StageEvent");
+		int n=sc.nextInt();
+		if(n==1){
+			System.out.println("Enter the number of stalls:");
+			int st=sc.nextInt();
+			Exhibition ex=new Exhibition(name,det,ow,st);
+			System.out.println("The projected revenue of the event is "+ex.projectedRevenue());
+		}
+		else{
+			System.out.println("Enter the number of shows:");
+			int sh=sc.nextInt();
+			System.out.println("Enter the number of seats per show:");
+			int se=sc.nextInt();
+			StageEvent ste=new StageEvent(name,det,ow,sh,se);
+			System.out.println("The projected revenue of the event is "+ste.projectedRevenue());
+		}
+	}
+}
+
+
+
+
+
+
+Exhibition.java:
+
+public class Exhibition extends Event{
+	//write your code here
+	private int noOfStall;
+	public Exhibition(String a,String b,String c,int d){
+		super(a,b,c);
+		this.noOfStall=d;
+	}
+	public double projectedRevenue(){
+		return 10000*noOfStall;
+	}
+}
+
+
+
+
+StageEvent.java:
+
+public class StageEvent extends Event{
+	//write your code here
+	private int noOfShows;
+	private int noOfSeatsPerShow;
+	public StageEvent(String a,String b,String c,int  d,int e){
+		super(a,b,c);
+		this.noOfShows=d;
+		this.noOfSeatsPerShow=e;
+	}
+	public double projectedRevenue(){
+		double rev = 50*noOfSeatsPerShow*noOfShows;
+		return rev;
+	}
+}
