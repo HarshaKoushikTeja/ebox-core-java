@@ -1,0 +1,108 @@
+GoldStall.java:
+
+public class GoldStall extends SilverStall{
+	//fill your code here
+	private int tvSet;
+	public GoldStall(String a,  String b,String c,int d,int e){
+		super(a,b,c,d);
+		this.tvSet=e;
+	}
+	public int totalCost(){
+	  return	super.totalCost()+tvSet*100;
+	}
+	public int getTvSets()
+	{
+		return this.tvSet;
+	}
+}
+
+
+
+
+PlatinumStall.java:
+
+public class PlatinumStall extends GoldStall{
+	private int projector;
+	//fill your code here
+	public PlatinumStall(String a , String b,String c,int d,int e,int f){
+		super(a,b,c,d,e);
+		this.projector=f;
+	}
+	public int totalCost(){
+		return super.totalCost()+projector*500;
+	}
+	public int getProj(){
+		return this.projector;
+	}
+}
+
+
+
+
+
+
+Main.java:
+
+import java.util.*;
+public class Main {
+	public static void main(String[] args){
+		//fill your code here
+		System.out.println("Choose Stall Type\n1.Silver Stall\n2.Gold Stall\n3.Platinum Stall");
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		if(sc.hasNextLine()){
+			sc.nextLine();
+		}
+		String arr[];
+       if(n==1){
+		System.out.println("Enter Stall details in comma separated(Stall Name,Stall Description,Owner Name,Stall Cost)");
+		arr=sc.nextLine().split(",");
+		SilverStall ss=new SilverStall(arr[0],arr[1],arr[2],Integer.parseInt(arr[3]));
+		ss.display();
+		System.out.println("Total Cost:"+ss.totalCost());
+	   }
+	   else if(n==2){
+		   System.out.println("Enter Stall details in comma separated(Stall Name,Stall Description,Owner Name,Stall Cost,Number of TV set)");
+		   arr=sc.nextLine().split(",");
+		   GoldStall gs=new GoldStall(arr[0],arr[1],arr[2],Integer.parseInt(arr[3]),Integer.parseInt(arr[4]));
+		   gs.display();
+		   System.out.println("TV Sets:"+gs.getTvSets()+"\nTotal Cost:"+gs.totalCost());
+	   }
+	   else if(n==3){
+		   System.out.println("Enter Stall details in comma separated(Stall Name,Stall Description,Owner Name,Stall Cost,Number of TV set,Number of Projectors)");
+		   arr=sc.nextLine().split(",");
+		   PlatinumStall ps=new PlatinumStall(arr[0],arr[1],arr[2],Integer.parseInt(arr[3]),Integer.parseInt(arr[4]),Integer.parseInt(arr[5]));
+		   ps.display();
+		   System.out.println("TV Sets:"+ps.getTvSets()+"\nProjectors:"+ps.getProj()+"\nTotal Cost:"+ps.totalCost());
+	   }
+	}
+}
+
+
+
+
+
+
+
+
+SilerStall.java:
+
+public class SilverStall {
+	//fill your code here
+	protected String name;
+	protected String detail;
+	protected String owner;
+	protected int cost;
+	 public SilverStall(String a,String b,String c,int d){
+		 this.name=a;
+		 this.detail=b;
+		 this.owner=c;
+		 this.cost=d;
+	 }
+	public int totalCost(){
+		return this.cost;
+	}
+	public void display(){
+		System.out.println("Stall Name:"+this.name+"\nDetails:"+this.detail+"\nOwner Name:"+this.owner);
+	}
+}
