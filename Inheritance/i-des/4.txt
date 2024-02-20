@@ -1,0 +1,93 @@
+AccountBO.java:
+
+public class AccountBO {
+	public FixedAccount getAccountDetail(String detail) {
+		//fill the code
+	
+			String[] arr=detail.split(",");
+			return new FixedAccount(arr[0],Double.parseDouble(arr[1]),arr[2],Double.parseDouble(arr[3]),Integer.parseInt(arr[4]));
+		
+
+	}
+}
+
+
+
+
+SavingsAccount.java:
+
+public class SavingAccount extends Account{
+	//fill the code
+	protected double minimumBalance;
+	public SavingAccount(String a,double b,String c,double d){
+		super(a,b,c);
+		this.minimumBalance=d;
+	}
+	public double getMinBal(){
+		return this.minimumBalance;
+	}
+}
+
+
+
+
+Main.java:
+
+import java.util.*;
+public class Main {
+	public static void main(String[] args) {
+		//fill the code
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter account Detail:");
+		String a=sc.nextLine();
+		AccountBO ab=new AccountBO();
+	  FixedAccount fa=	ab.getAccountDetail(a);
+	  System.out.println("Account Details:");
+		System.out.format("%-20s %-10s %-20s %-20s %s\n","Account Number","Balance","Account holder name","Minimum balance","Locking period");
+		//fill the code
+		System.out.format("%-20s %-10.2f %-20s %-20.1f %d\n",fa.getAccountNumber(),fa.getBalance(),fa.getAccountHolderName(),fa.getMinBal(),fa.getLocP());
+	}
+}
+
+
+
+
+Account.java:
+
+public class Account {
+	//fill the code
+	protected String accountNumber;
+	protected double balance;
+	protected String accountHolderName;
+	public Account(String a,double b,String c){
+		this.accountNumber=a;
+		this.balance=b;
+		this.accountHolderName=c;
+	}
+	public String getAccountNumber(){
+		return this.accountNumber;
+	}
+	public double getBalance(){
+	 return this.balance;
+	}
+	public String getAccountHolderName(){
+		return this.accountHolderName;
+}
+}
+
+
+
+
+FixedAccount.java:
+
+public class FixedAccount extends SavingAccount {
+	//fill the code
+	private int lockingPeriod;
+	public FixedAccount(String a,double b,String c,double d,int e){
+		super(a,b,c,d);
+		this.lockingPeriod=e;
+	}
+	public int getLocP(){
+		return this.lockingPeriod;
+	}
+}
