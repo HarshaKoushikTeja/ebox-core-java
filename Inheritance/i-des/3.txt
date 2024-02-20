@@ -1,0 +1,105 @@
+Event.java:
+
+
+public class Event {
+	//Your code here
+	private String name;
+	private String detail;
+	private String type;
+	private String organiserName;
+	public Event(String a,String b,String c,String d){
+		this.name=a;
+		this.detail=b;
+		this.type=c;
+		this.organiserName=d;
+	}
+	public String getName(){
+		return this.name;
+	}
+	public String getDetail(){
+		return this.detail;
+	}
+	public String getType(){
+		return this.type;
+	}
+	public String getOrganiserName(){
+		return this.organiserName;
+	}
+}
+
+
+
+Main.java:
+
+import java.util.*;
+public class Main {
+
+	public static void main(String[] args){
+		//Your code here
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Choose Event type\n1.Exhibition\n2.StageEvent");
+		int n=sc.nextInt();
+		if(n==1){
+		sc.nextLine();
+		System.out.println("Enter the details in CSV format");
+		String s=sc.nextLine();
+		String[] arr=s.split(",");
+			Exhibition ex=new Exhibition(arr[0],arr[1],arr[2],arr[3],Integer.parseInt(arr[4]));
+			ex.display();
+		}
+		else if(n==2){
+			sc.nextLine();
+			System.out.println("Enter the details in CSV format");
+			String arr[]=sc.nextLine().split(",");
+			StageEvent st=new StageEvent(arr[0],arr[1],arr[2],arr[3],Integer.parseInt(arr[4]));
+			st.display();
+		}
+		else{
+			System.out.println("Invalid choice");
+		}
+		
+		
+	}
+}
+
+
+
+
+
+exhibition.java:
+
+
+
+
+public class Exhibition extends Event {
+	//your code here
+	private int noOfStalls;
+	public Exhibition(String a,String b,String c,String d,int e){
+		super(a,b,c,d);
+		this.noOfStalls=e;
+	}
+	public void display(){
+	System.out.println("Event Name:"+super.getName()+"\nDetail:"+super.getDetail()+"\nType:"+super.getType()+"\nOrganiser Name:"+super.getOrganiserName()+"\nNumber of stalls:"+this.noOfStalls);
+	}
+}
+
+
+
+
+
+
+StageEvent.java:
+
+
+
+public class StageEvent extends Event{
+	//Your code here
+	private int noOfSeats;
+	public StageEvent(String a, String b, String c,String d,int e){
+		super(a,b,c,d);
+		this.noOfSeats=e;
+	}
+	public  void display(){
+		System.out.println("Event Name:"+super.getName()+"\nDetail:"+super.getDetail()+"\nType:"+super.getType()+"\nOrganiser Name:"+super.getOrganiserName()+"\nNumber of seats:"+this.noOfSeats);
+	}
+}
