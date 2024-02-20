@@ -1,0 +1,215 @@
+Circle.java:
+
+public class Circle extends Shape    // fill the code
+{
+    private Double radius;
+    
+    public Circle()
+    {
+    }
+    public Circle(Double radius)
+    {
+        this.radius=radius;
+    }
+     public void setRadius(Double radius)
+    {
+        this.radius=radius;
+    }
+    public Double getRadius()
+    {
+        return this.radius;
+    }
+    
+
+   public void computeArea()
+    {
+       // fill the code
+       setArea(((double)22/(double)7)*(this.radius*this.radius));
+       
+    }
+}
+
+
+
+
+
+Triangle.java:
+
+public class Triangle  extends Shape  // fill the code
+{
+    private Double base;
+    private Double height;
+    
+    public Triangle()
+    {
+        
+    }
+    public Triangle( Double base,Double height)
+    {
+        this.base=base;
+        this.height=height;
+    }
+    
+	public void setHeight(Double height) 
+    {
+		this.height=height;
+	}
+    public Double getHeight()
+    {
+        return this.height;
+    }
+    
+        public void setBase(Double base) 
+    {
+		this.base=base;
+	}
+    public Double getBase()
+    {
+        return this.base;
+    }
+    
+    
+	public void computeArea()
+    {
+	        // fill the code
+            setArea((this.base*this.height)/(double)2);
+
+	}
+}
+
+
+
+
+
+
+Shape.java:
+
+public class Shape
+{
+	protected  Double area;
+    
+    public Shape()
+    {
+    }
+    public Shape(Double area)
+    {
+        this.area=area;
+    }
+    
+    public void setArea(Double area)
+    {
+        this.area=area;
+    }
+    public Double getArea()
+    {
+        return this.area;
+    }
+    
+    public void computeArea()
+    {
+       // fill the code
+     this.area=0.0;
+    }
+}
+
+
+
+
+
+Main.java:
+
+import java.util.*;
+import java.io.*;
+
+public class Main 
+{
+    public static void main(String[] args)throws Exception
+    {
+         // fill the code
+         Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the shape\n1.Circle\n2.Rectangle\n3.Triangle");
+		int n=sc.nextInt();
+        
+        if(n==1)
+        {
+            System.out.println("Enter the radius:");
+               // fill the code
+               Circle c=new Circle();
+               c.setRadius(sc.nextDouble());
+               c.computeArea();
+               System.out.printf("Area of circle is %.2f",c.getArea());
+               
+        }
+        else if(n==2)
+        {
+            System.out.println("Enter the length and breadth:");
+               // fill the code
+               Rectangle r=new Rectangle();
+               r.setLength(sc.nextDouble());
+                r.setBreadth(sc.nextDouble());
+                r.computeArea();
+                System.out.printf("Area of rectangle is %.2f",r.getArea());
+        }
+        else if(n==3)
+        {
+            System.out.println("Enter the base and height:");
+               // fill the code
+               Triangle t=new Triangle();
+               t.setBase(sc.nextDouble());
+               t.setHeight(sc.nextDouble());
+               t.computeArea();
+               System.out.printf("Area of triangle is %.2f",t.getArea());
+        }
+        else
+        {
+             System.out.println("Invalid choice");
+        }
+	}
+}
+
+
+
+
+
+
+Rectangle.java:
+
+public class Rectangle extends Shape    // fill the code
+{
+    private Double length;
+    private Double breadth;
+    
+    public Rectangle()
+    {
+    }
+    public Rectangle(Double length,Double breadth)
+    {
+        this.length=length;
+        this.breadth=breadth;
+    }
+    
+	public void setBreadth(Double breadth) 
+    {
+		this.breadth=breadth;
+	}
+    public Double getBreadth()
+    {
+        return this.breadth;
+    }
+    
+    public void setLength(Double length) 
+    {
+    	this.length=length;
+	}
+    public Double getLength()
+    {
+        return this.length;
+    }
+    
+	public void computeArea()
+    {
+	     // fill the code
+         setArea(this.length*this.breadth);
+	}
+}
+
