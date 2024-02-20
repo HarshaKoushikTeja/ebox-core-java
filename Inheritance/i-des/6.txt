@@ -1,0 +1,87 @@
+Main.java:
+
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args){
+	//Your code here
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the Booking details");
+		String s=sc.nextLine();
+		String arr[]=s.split(",");
+		TicketBooking t=new TicketBooking(arr[0],arr[1],Integer.parseInt(arr[2]));
+		System.out.println("Payment mode\n1.Cash payment\n2.Wallet payment\n3.Credit card payment");
+		int n=sc.nextInt();
+		if(n==1){
+			sc.nextLine();
+			System.out.println("Enter the amount");
+			double am=sc.nextDouble();
+			t.display();
+			t.makePayment(am);
+
+		} else if(n==2){
+			sc.nextLine();
+			System.out.println("Enter the amount");
+			double am=sc.nextDouble();
+			sc.nextLine();
+			System.out.println("Enter the wallet number");
+			String wn=sc.nextLine();
+			t.display();
+			t.makePayment(wn,am);
+		} else if(n==3){
+			sc.nextLine();
+			System.out.println("Enter card holder name");
+			String na=sc.nextLine();
+			System.out.println("Enter the amount");
+			double am=sc.nextDouble();
+			sc.nextLine();
+			System.out.println("Enter the credit card type");
+			String cc=sc.nextLine();
+			System.out.println("Enter the CCV number");
+			String a=sc.nextLine();
+			t.display();
+			t.makePayment(cc,a,na,am);
+		}
+		else 
+		System.out.println("Invalid choice");
+	
+	}
+
+}
+
+
+
+
+
+
+
+
+
+TicketBooking.java:
+
+
+
+public class TicketBooking {
+	//Your code here
+	private String stageEvent;
+	private String customer;
+	private int noOfSeats;
+	public TicketBooking(String a,String b,int c){
+		this.stageEvent=a;
+		this.customer=b;
+		this.noOfSeats=c;
+	} 
+	public void display(){
+		System.out.println("Stage event:"+this.stageEvent+"Customer:"+this.customer+"\nNumber of seats:"+this.noOfSeats);
+	}
+	public void makePayment(double amount){
+	  System.out.println("Amount "+amount+" paid in cash");
+	}
+	public void makePayment(String walletNumber ,double amount){
+		System.out.println("Amount "+amount+" paid using wallet number "+walletNumber);
+	}
+	public void makePayment(String creditCard ,String ccv ,String name ,double amount){
+		System.out.println("Holder name:"+name+"\nAmount "+amount+" paid using "+creditCard+" card \nCCV:"+ccv);
+	}
+}
