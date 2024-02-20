@@ -1,0 +1,39 @@
+BestMobilePlan.java:
+
+public class BestMobilePlan {
+	
+    public void printPlanDetails(int daytime, int evening, int weekend) {
+        double planA = Math.round((Math.max(0, (daytime - 100) * 0.25) + evening * 0.15 + weekend * 0.20)*100.0)/100.0;
+        double planB = Math.round((Math.max(0, (daytime - 250) * 0.45) + evening * 0.35 + weekend * 0.25)*100.0)/100.0;
+
+        System.out.printf("Plan A costs %.2f\n", planA);
+        System.out.printf("Plan B costs %.2f\n", planB);
+
+        if (planA < planB) {
+            System.out.println("Plan A is cheapest");
+        } else if (planB < planA) {
+            System.out.println("Plan B is cheapest");
+        } else {
+            System.out.println("Plan A and B are the same price");
+        }
+    }
+}
+
+
+
+
+Main.java:
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int daytime = scanner.nextInt();
+        int evening = scanner.nextInt();
+        int weekend = scanner.nextInt();
+
+        BestMobilePlan bmp = new BestMobilePlan();
+        bmp.printPlanDetails(daytime, evening, weekend);
+    }
+}
