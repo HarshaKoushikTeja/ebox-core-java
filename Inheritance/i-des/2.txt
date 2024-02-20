@@ -1,0 +1,98 @@
+Exhibition.java:
+
+public class Exhibition extends Event{
+    private int noOfStall;
+    public Exhibition(String a, String b, String c, String d, double e, int f) {
+        super(a,b,c,d,e);
+        this.noOfStall=f;
+     }
+
+}
+
+
+
+
+Main.java:
+
+import java.util.*;
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
+import java.time.temporal.ChronoUnit;
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter your choice:\n1.Exhibition event\n2.Stage event");
+        int c=sc.nextInt();
+        Event e;
+        sc.nextLine();
+        if (c==1) {
+            System.out.println("Enter the details of exhibition:");
+            String s=sc.nextLine();
+            String[] arr=s.split(",");
+           e=new Exhibition(arr[0],arr[1],arr[2],arr[3],Double.parseDouble(arr[4]),Integer.parseInt(arr[5]));
+          System.out.println("Enter the starting date of the event:");
+          arr=sc.nextLine().split("-");
+          LocalDate sd=LocalDate.of( Integer.parseInt(arr[2]),  Integer.parseInt(arr[1]), Integer.parseInt(arr[0]) );
+          System.out.println("Enter the ending date of the event:");
+          arr=sc.nextLine().split("-");
+          LocalDate ed=LocalDate.of( Integer.parseInt(arr[2]), Integer.parseInt(arr[1]),Integer.parseInt(arr[0]) );
+          long diff=ChronoUnit.DAYS.between(sd,ed);
+          System.out.printf("The GST to be paid is Rs.%.1f\n",(double)5*diff*e.getCostPerDay()/(double)100);
+        }
+        else {
+            System.out.println("Enter the details of stage event:");
+            String s=sc.nextLine();
+            String[] arr=s.split(",");
+            e= new StageEvent(arr[0],arr[1],arr[2],arr[3],Double.parseDouble(arr[4]), Integer.parseInt( arr[5]));
+
+            System.out.println("Enter the starting date of the event:");
+           arr=sc.nextLine().split("-");
+           LocalDate sd=LocalDate.of(Integer.parseInt(arr[2]),  Integer.parseInt(arr[1]), Integer.parseInt(arr[0]));
+            System.out.println("Enter the ending date of the event:");           
+           arr=sc.nextLine().split("-");
+            LocalDate ed=LocalDate.of(
+            Integer.parseInt(arr[2]),Integer.parseInt(arr[1]),Integer.parseInt(arr[0])  );
+            long diff=ChronoUnit.DAYS.between(sd,ed);
+            System.out.printf("The GST to be paid is Rs.%.1f\n",(double)15*diff*e.getCostPerDay()/(double)100);
+        }
+    }
+}
+
+
+
+
+
+StageEvent.java:
+
+public class StageEvent extends Event{
+    private int noOfSeats;
+    public StageEvent(String a, String b, String c, String d, double e, int f) {
+       super(a,b,c,d,e);
+       this.noOfSeats=f;
+    }
+
+}
+
+
+
+Event.java:
+
+public class Event {
+    private String name;
+    private String detail;
+    private String type;
+    private String ownerName;
+    private Double costPerDay;
+   public Event(String a,String b,String c,String d,double e){
+   this.name=a;
+   this.detail=b;
+   this.type=c;
+   this.ownerName=d;
+   this.costPerDay=e;
+   }
+    public double getCostPerDay() {
+        return this.costPerDay;
+    }
+    
+}
